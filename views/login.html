@@ -279,17 +279,18 @@
                         <p>Student Portal</p>
                     </div>
                     <h2>Welcome Back</h2>
-                    <form id="studentLoginForm"  action="/login" method="POST">
+                    <form id="studentLoginForm" action="/api/login" method="POST">
                         <div class="form-group">
-                            <label for="studentId">Student ID</label>
-                            <input type="text" id="studentId" name="studentId" required>
+                            <label for="username">Student ID</label>
+                            <input type="text" id="username" name="username" required>
                         </div>
                         <div class="form-group">
-                            <label for="studentPassword">Password</label>
-                            <input type="password" id="studentPassword" name="studentPassword" required>
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
                         </div>
                         <button type="submit" class="submit-btn">Sign In</button>
                     </form>
+                    
                     <button class="flip-btn" onclick="flipCard()">Login as Club Head</button>
                 </div>
             </div>
@@ -327,15 +328,15 @@
             document.querySelector('.card').classList.toggle('flipped');
         }
 
-        document.getElementById('studentLoginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Add your student login logic here
-        });
+        // document.getElementById('studentLoginForm').addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     // Add your student login logic here
+        // });
 
-        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Add your admin login logic here
-        });
+        // document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     // Add your admin login logic here
+        // });
     </script>
 </body>
 </html>

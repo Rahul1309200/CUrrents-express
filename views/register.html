@@ -331,7 +331,7 @@
                 <div class="progress-step">3</div>
             </div>
 
-            <form id="registrationForm" action="/register" method="POST">
+            <form id="registrationForm" action="/api/register" method="POST">
                 <!-- Step 1: Role Selection -->
                 <div class="form-section active" id="step1">
                     <h2>Choose Your Role</h2>
@@ -365,7 +365,7 @@
                     </div>
                     <div class="form-group student-field">
                         <label for="rollNo">Roll Number</label>
-                        <input type="text" id="rollNo">
+                        <input type="text" id="rollNo" name="username">
                     </div>
                     <div class="form-group admin-field" style="display: none;">
                         <label for="clubName">Club Name</label>
@@ -382,7 +382,7 @@
                     <h2>Create Your Account</h2>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" id="password" required>
+                        <input type="password" id="password" name="password" required>
                         <div class="password-strength">
                             <div class="strength-meter"></div>
                         </div>
@@ -491,11 +491,11 @@
             }
         }
 
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Registration successful!');
-            window.location.href = 'login.html';
-        });
+        // document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     alert('Registration successful!');
+        //     window.location.href = 'login.html';
+        // });
     </script>
 </body>
 </html>

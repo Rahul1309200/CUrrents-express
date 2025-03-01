@@ -1,0 +1,53 @@
+
+Project Evaluation 2
+Extend your existing project with following requirements
+	Use express
+	Use middlewares
+	Handle and serve static pages with express
+	Routing methods, Route paths, Route parameters, Route Handlers
+	Routing using express use routing middlewares
+	Handle exceptions using exception handling middlewares
+	Use minimum 5 third party middlewares
+	send response along with relevant status codes
+	Project must have proper directory structure
+	
+	Presentation must be there, 
+	highlight your innovation 
+	application for day to day life
+
+Note:- Keep presentation and working code on each laptop
+
+==========================================================================
+
+Project Evaluation 1 (For reference)
+Create backend along with front end for informative website
+	Group of hotels
+	Group of Institutions
+	Group of Hospitals
+	 - Choose any one
+Front end:-  
+	Design minimum 10 + 1 home pages
+	Application should contain
+		1. Basic information
+		2. About, Contact, Portfolio pages
+		3. various departments and subdepartments
+		4. Back and home buttons		
+	Use various images, attractive backgrounds
+	scrolling text and images
+
+Backend:- 
+	1.  Integration between frontend and backend technologies
+	2.  Create HTTP node.js server application.
+	3.  It should have complete request response model
+	4.  Server should handle GET and POST requests.
+	5.  Create endpoints as per requirement.
+	6.  Import all necessary modules.
+	7.  Handle static pages by server.
+	8.  Store data at backend using fs module.
+	9.  Provide user authentication for login.
+
+Workflow
+	1. Welcome page
+	2. Login page
+	3. On successful login navigate to dashboard page.
+	4. if login failed navigate to registration or signup page.
