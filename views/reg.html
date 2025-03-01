@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CU-RRENTS - Registration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            background-color: #F7F2F3;
+            color: #1F1F1F;
+        }
+
+        .left-section {
+            flex: 1;
+            background-image: url('https://github.com/vashishtalisha/images/blob/main/Chitkara1.jpg?raw=true');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            position: relative;
+            box-shadow: inset 0 0 0 2000px rgba(165, 18, 50, 0.3);
+        }
+
+        .left-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            background-size: cover;
+            background-position: center;
+            filter: blur(20px);
+            z-index: -1;
+        }
+
+        .left-section h1 {
+            font-size: 3.5em;
+            margin: 0;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            text-shadow: 4px 6px 12px rgba(0, 0, 0, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .left-section p {
+            font-size: 1.5em;
+            margin-top: 10px;
+            color: white;
+            font-weight: 400;
+            overflow: hidden;
+            border-right: 2px solid rgba(255, 255, 255, 0.75);
+            white-space: nowrap;
+            animation: typing 3s steps(30, end), blink 0.7s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: rgba(255, 255, 255, 0.75) }
+        }
+
+
+        .right-section {
+            width: 600px;
+            padding: 20px;
+            background: linear-gradient(135deg, #F7F2F3 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .registration-card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(31, 31, 31, 0.1);
+            border: 1px solid rgba(165, 18, 50, 0.1);
+            position: relative;
+            margin: 20px;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .progress-step {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #F7F2F3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #1F1F1F;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-step.active {
+            background: #A51232;
+            color: white;
+        }
+
+        .progress-step.completed {
+            background: #A51232;
+            color: white;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 17px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #F7F2F3;
+            z-index: 0;
+        }
+
+        .progress-line-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: #A51232;
+            transition: width 0.3s ease;
+        }
+
+        .form-section {
+            flex-grow: 1;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-section.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-section h2 {
+            margin-bottom: 30px;
+            color: #A51232;
+            font-size: 24px;
+        }
+
+        .role-selector {
+            display: flex;
+            gap: 25px;
+            margin: 20px 0 40px;
+        }
+
+        .role-option {
+            flex: 1;
+            padding: 30px;
+            border: 2px solid #F7F2F3;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .role-option:hover {
+            border-color: #A51232;
+            background: rgba(165, 18, 50, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .role-option.selected {
+            border-color: #A51232;
+            background: rgba(165, 18, 50, 0.1);
+        }
+
+        .role-option i {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #A51232;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #1F1F1F;
+            font-size: 15px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #F7F2F3;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background: #F7F2F3;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #A51232;
+            outline: none;
+            background: white;
+        }
+
+        .button-group {
+            margin-top: auto;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            flex: 1;
+        }
+
+        .btn-next {
+            background: #A51232;
+            color: white;
+        }
+
+        .btn-prev {
+            background: #F7F2F3;
+            color: #1F1F1F;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 15px;
+        }
+
+        .login-link a {
+            color: #A51232;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .password-strength {
+            height: 5px;
+            background: #F7F2F3;
+            margin-top: 5px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .strength-meter {
+            height: 100%;
+            width: 0;
+            transition: width 0.3s, background 0.3s;
+        }
+
+        .strength-weak { background: #ff4444; width: 33.33%; }
+        .strength-medium { background: #ffbb33; width: 66.66%; }
+        .strength-strong { background: #00C851; width: 100%; }
+    </style>
+</head>
+<body>
+    <div class="left-section">
+        <h1>Join CU-RRENTS</h1>
+        <p>Begin Your Journey</p>
+    </div>
+
+    <div class="right-section">
+        <div class="registration-card">
+            <div class="progress-bar">
+                <div class="progress-line">
+                    <div class="progress-line-fill" style="width: 0%"></div>
+                </div>
+                <div class="progress-step active">1</div>
+                <div class="progress-step">2</div>
+                <div class="progress-step">3</div>
+            </div>
+
+            <form id="registrationForm" action="/register" method="POST">
+                <!-- Step 1: Role Selection -->
+                <div class="form-section active" id="step1">
+                    <h2>Choose Your Role</h2>
+                    <div class="role-selector">
+                        <div class="role-option" data-role="student">
+                            <i>👨‍🎓</i>
+                            <h3>Student</h3>
+                            <p>Join as a regular student</p>
+                        </div>
+                        <div class="role-option" data-role="admin">
+                            <i>👑</i>
+                            <h3>Club Head</h3>
+                            <p>Register as a club administrator</p>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-next" onclick="nextStep()">Continue</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Personal Information -->
+                <div class="form-section" id="step2">
+                    <h2>Personal Information</h2>
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group student-field">
+                        <label for="rollNo">Roll Number</label>
+                        <input type="text" id="rollNo">
+                    </div>
+                    <div class="form-group admin-field" style="display: none;">
+                        <label for="clubName">Club Name</label>
+                        <input type="text" id="clubName">
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-prev" onclick="prevStep()">Back</button>
+                        <button type="button" class="btn btn-next" onclick="nextStep()">Continue</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Account Setup -->
+                <div class="form-section" id="step3">
+                    <h2>Create Your Account</h2>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                        <div class="password-strength">
+                            <div class="strength-meter"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-prev" onclick="prevStep()">Back</button>
+                        <button type="submit" class="btn btn-next">Complete Registration</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="login-link">
+                Already have an account? <a href="/">Sign in</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        // Role selection
+        document.querySelectorAll('.role-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.role-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                const role = this.dataset.role;
+                
+                // Show/hide relevant fields
+                const studentFields = document.querySelectorAll('.student-field');
+                const adminFields = document.querySelectorAll('.admin-field');
+                
+                if (role === 'student') {
+                    studentFields.forEach(field => field.style.display = 'block');
+                    adminFields.forEach(field => field.style.display = 'none');
+                } else {
+                    studentFields.forEach(field => field.style.display = 'none');
+                    adminFields.forEach(field => field.style.display = 'block');
+                }
+            });
+        });
+
+        // Password strength meter
+        document.getElementById('password').addEventListener('input', function(e) {
+            const password = e.target.value;
+            const strengthMeter = document.querySelector('.strength-meter');
+            
+            const hasUpperCase = /[A-Z]/.test(password);
+            const hasLowerCase = /[a-z]/.test(password);
+            const hasNumbers = /\d/.test(password);
+            const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+            
+            const strength = [hasUpperCase, hasLowerCase, hasNumbers, hasSpecialChar]
+                .filter(Boolean).length;
+
+            strengthMeter.className = 'strength-meter';
+            if (password.length > 0) {
+                if (strength <= 2) strengthMeter.classList.add('strength-weak');
+                else if (strength === 3) strengthMeter.classList.add('strength-medium');
+                else strengthMeter.classList.add('strength-strong');
+            }
+        });
+
+        function updateProgressBar() {
+            const progressLine = document.querySelector('.progress-line-fill');
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            progressLine.style.width = `${progress}%`;
+
+            document.querySelectorAll('.progress-step').forEach((step, index) => {
+                if (index + 1 < currentStep) {
+                    step.classList.add('completed');
+                    step.classList.remove('active');
+                } else if (index + 1 === currentStep) {
+                    step.classList.add('active');
+                    step.classList.remove('completed');
+                } else {
+                    step.classList.remove('active', 'completed');
+                }
+            });
+        }
+
+        function showStep(step) {
+            document.querySelectorAll('.form-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(`step${step}`).classList.add('active');
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                showStep(currentStep);
+                updateProgressBar();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+                updateProgressBar();
+            }
+        }
+
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Registration successful!');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

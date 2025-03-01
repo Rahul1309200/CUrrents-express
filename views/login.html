@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CU-RRENTS - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            background-color: #F7F2F3;
+        }
+
+        .left-section {
+            flex: 1;
+            background-image: url('https://github.com/vashishtalisha/images/blob/main/Chitkara1.jpg?raw=true');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            position: relative;
+            box-shadow: inset 0 0 0 2000px rgba(165, 18, 50, 0.3);
+        }
+
+        .left-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            background-size: cover;
+            background-position: center;
+            filter: blur(20px);
+            z-index: -1;
+        }
+
+        .left-section h1 {
+            font-size: 3.5em;
+            margin: 0;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            text-shadow: 4px 6px 12px rgba(0, 0, 0, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .left-section p {
+            font-size: 1.5em;
+            margin-top: 10px;
+            color: white;
+            font-weight: 400;
+            overflow: hidden;
+            border-right: 2px solid rgba(255, 255, 255, 0.75);
+            white-space: nowrap;
+            animation: typing 3s steps(30, end), blink 0.7s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: rgba(255, 255, 255, 0.75) }
+        }
+
+        .right-section {
+            width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            perspective: 1000px;
+            background: linear-gradient(135deg, #F7F2F3 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .right-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(165, 18, 50, 0.05) 0%, rgba(165, 18, 50, 0.1) 100%);
+            z-index: 0;
+        }
+
+        .card {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            z-index: 1;
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-side {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(31, 31, 31, 0.1);
+            border: 1px solid rgba(165, 18, 50, 0.1);
+        }
+
+        .card-front {
+            z-index: 2;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+        }
+
+        .form-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #1F1F1F;
+            font-size: 0.9em;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #F7F2F3;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background: #F7F2F3;
+        }
+
+        .form-group input:focus {
+            border-color: #A51232;
+            outline: none;
+            background: white;
+        }
+
+        .submit-btn {
+            background-color: #A51232;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .submit-btn:hover {
+            background-color: #8a0f2a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(165, 18, 50, 0.2);
+        }
+
+        .flip-btn {
+            background: none;
+            border: none;
+            color: #A51232;
+            text-decoration: none;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 14px;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        .flip-btn:hover {
+            background: rgba(165, 18, 50, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #1F1F1F;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
+            color: #A51232;
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .logo p {
+            color: #1F1F1F;
+            font-size: 1.1em;
+            opacity: 0.8;
+        }
+
+        .decorative-circles {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(165, 18, 50, 0.05) 0%, rgba(165, 18, 50, 0) 70%);
+        }
+
+        .circle-1 {
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+        }
+
+        .circle-2 {
+            bottom: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="left-section">
+        <h1>CU-RRENTS</h1>
+        <p>Your Guide to All things Chitkara</p>
+    </div>
+
+    <div class="right-section">
+        <div class="decorative-circles circle-1"></div>
+        <div class="decorative-circles circle-2"></div>
+        <div class="card">
+            <!-- Student Login (Front) -->
+            <div class="card-side card-front">
+                <div class="form-container">
+                    <div class="logo">
+                        <h1>CU-RRENTS</h1>
+                        <p>Student Portal</p>
+                    </div>
+                    <h2>Welcome Back</h2>
+                    <form id="studentLoginForm"  action="/login" method="POST">
+                        <div class="form-group">
+                            <label for="studentId">Student ID</label>
+                            <input type="text" id="studentId" name="studentId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentPassword">Password</label>
+                            <input type="password" id="studentPassword" name="studentPassword" required>
+                        </div>
+                        <button type="submit" class="submit-btn">Sign In</button>
+                    </form>
+                    <button class="flip-btn" onclick="flipCard()">Login as Club Head</button>
+                </div>
+            </div>
+
+            <!-- Admin Login (Back) -->
+            <div class="card-side card-back">
+                <div class="form-container">
+                    <div class="logo">
+                        <h1>CU-RRENTS</h1>
+                        <p>Club Head Portal</p>
+                    </div>
+                    <h2>Club Head Access</h2>
+                    <form id="adminLoginForm">
+                        <div class="form-group">
+                            <label for="adminUsername">Username</label>
+                            <input type="text" id="adminUsername" name="adminUsername" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminPassword">Password</label>
+                            <input type="password" id="adminPassword" name="adminPassword" required>
+                        </div>
+                        <button type="submit" class="submit-btn">Sign In</button>
+                    </form>
+                    <button class="flip-btn" onclick="flipCard()">Login as Student</button>
+                    <div class="login-link">
+                       Dont have an account? <a href="/register">Sign in</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function flipCard() {
+            document.querySelector('.card').classList.toggle('flipped');
+        }
+
+        document.getElementById('studentLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your student login logic here
+        });
+
+        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your admin login logic here
+        });
+    </script>
+</body>
+</html>
