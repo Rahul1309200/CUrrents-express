@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/navbar.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fa;
+            transition: background-color 0.3s ease;
+        }
+
+        h1, h2 {
+            color: #A51232; /* Red color for headers */
+            transition: color 0.3s ease;
+        }
+
+        /* Header */
+        header {
+            background-color: #1F1F1F;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Main Container */
+        .container {
+            width: 90%;
+            margin: 50px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .contact-form, .contact-info, .business-hours, .faq, .testimonials {
+            width: 48%;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-form:hover, .contact-info:hover, .business-hours:hover, .faq:hover, .testimonials:hover {
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+        }
+
+        /* Contact Form */
+        .contact-form h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #A51232;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #8A1027;
+            transform: scale(1.05);
+        }
+
+        .contact-form button {
+            background-color: #A51232;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #8A1027;
+            transform: translateY(-3px);
+        }
+
+        /* Contact Information */
+        .contact-info h2 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            font-size: 1.5rem;
+            color: #A51232;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #1F1F1F;
+        }
+
+        /* Map Section */
+        .map-container {
+            width: 100%;
+            height: 400px;
+            margin-bottom: 50px;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            transition: transform 0.3s ease;
+        }
+
+        /* Business Hours */
+        .business-hours h2 {
+            margin-bottom: 20px;
+        }
+
+        .business-hours p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        /* FAQ Section */
+        .faq h2 {
+            margin-bottom: 20px;
+        }
+
+        .faq ul {
+            list-style-type: none;
+            font-size: 1.1rem;
+        }
+
+        .faq li {
+            margin-bottom: 10px;
+        }
+
+        /* Testimonials Section */
+        .testimonials h2 {
+            margin-bottom: 20px;
+        }
+
+        .testimonial {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        /* Enrollment Form */
+        .enrollment-form {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            margin-top: 50px;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .enrollment-form:hover {
+            transform: scale(1.02);
+        }
+
+        .enrollment-form h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #A51232;
+            text-align: center;
+        }
+
+        .enrollment-form input,
+        .enrollment-form select,
+        .enrollment-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #A51232;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .enrollment-form input:focus,
+        .enrollment-form select:focus,
+        .enrollment-form textarea:focus {
+            border-color: #8A1027;
+            box-shadow: 0 0 8px rgba(138, 16, 39, 0.5);
+        }
+
+        .enrollment-form button {
+            display: block;
+            background-color: #A51232;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 6px;
+            margin: 0 auto;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .enrollment-form button:hover {
+            background-color: #8A1027;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-form,
+            .contact-info {
+                width: 100%;
+            }
+
+            .map-container {
+                height: 250px;
+            }
+        }
+
+        .social-icons img {
+    width: 30px; /* Set the desired width */
+    height: 30px; /* Set the desired height */
+    border-radius: 50%; /* Optional: Make the icons circular */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul class="navbar">
+          <li><a href="/dashboard" class="nav-link">HOME</a></li>
+          <li class="dropdown">
+            <a href="#clubs" class="nav-link">CLUBS</a>
+            <ul class="dropdown-menu">
+              <li class="nested-dropdown">
+                <a href="#">C2S2</a>
+                <ul class="nested-menu">
+                  <li><a href="/Panache">Panache</a></li>
+                  <li><a href="/Custody">Custody </a></li>
+                  <li><a href="/NatSamrat">Nat Samrat</a></li>
+                  <li><a href="/Reflection">Reflection</a></li>
+                  <li><a href="/Tasveer">Tasveer</a></li>
+                  <li><a href="/Dhwani">Dhwani</a></li>
+                  <li><a href="/TBR">The Bhangra Regiment</a></li>
+                  <li><a href="/Lit">Literayllis</a></li>
+                  <li><a href="/Natraj">Natraj</a></li>
+                  <li><a href="/LGS">Lethal Gidda Squad</a></li>
+                </ul>
+              </li>
+              <li class="nested-dropdown">
+                <a href="#">Technical</a>
+                <ul class="nested-menu">
+                  <li><a href="#">IEEE</a></li>
+                  <li><a href="#">Coding Ninjas</a></li>
+                  <li><a href="#">ACM</a></li>
+                  <li><a href="#">Coding Blocks</a></li>
+                  <li><a href="#">DICE</a></li>
+                </ul>
+              </li>
+              <li class="nested-dropdown">
+                <a href="#">Sports</a>
+                <ul class="nested-menu">
+                  <li><a href="#">Football Club</a></li>
+                  <li><a href="#">Cricket Club</a></li>
+                  <li><a href="#">Basketball Club</a></li>
+                  <li><a href="#">Tennis Club</a></li>
+                  <li><a href="#">Swimming Club</a></li>
+                </ul>
+              </li>
+              <li class="nested-dropdown">
+                <a href="#">Extra-Curriculars</a>
+                <ul class="nested-menu">
+                  <li><a href="#">DebSoc</a></li>
+                  <li><a href="#">Book Club</a></li>
+                  <li><a href="#">NSS</a></li>
+                  <li><a href="#">NCC</a></li>
+                  
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="/events" class="nav-link">EVENTS</a></li>
+          <li><a href="/contact" class="nav-link">CONTACT US</a></li>
+          <li><a href="/about" class="nav-link">ABOUT US</a></li>
+        </ul>
+      </nav>
+    <header>
+        <h1>Contact Us</h1>
+    </header>
+
+    <div class="container">
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h2>Get In Touch</h2>
+            <form action="#" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="tel" name="phone" placeholder="Your Phone Number" required>
+                <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <p><strong>Address:</strong> Chitkara University, Rajpura, Punjab, India</p>
+            <p><strong>Phone:</strong> +91-9876543210</p>
+            <p><strong>Email:</strong> contact@chitkara.edu.in</p>
+            <div class="social-icons">
+                <!-- Social Media Icons -->
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+                </a>
+                <a href="https://twitter.com" target="_blank">
+                    <img src="https://logos-world.net/wp-content/uploads/2020/04/Twitter-Symbol.png" alt="Twitter">
+                </a>
+                <a href="https://www.linkedin.com" target="_blank">
+                    <img src="https://pngimg.com/uploads/linkedIn/linkedIn_PNG29.png" alt="LinkedIn">
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Google Map -->
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps?q=Chitkara%20University,%20Rajpura%20Punjab&output=embed"
+            allowfullscreen></iframe>
+    </div>
+
+    <div class="container">
+
+        <!-- Business Hours -->
+        <div class="business-hours">
+            <h2>Business Hours</h2>
+            <p><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM</p>
+            <p><strong>Saturday:</strong> 10:00 AM - 4:00 PM</p>
+            <p><strong>Sunday:</strong> Closed</p>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <ul>
+                <li><strong>What services do you offer?</strong> We offer web development, digital marketing, and custom software solutions.</li>
+                <li><strong>How can I contact support?</strong> You can contact support via the contact form, phone, or email.</li>
+                <li><strong>What are your working hours?</strong> We are available from Monday to Friday, 9 AM to 6 PM.</li>
+            </ul>
+        </div>
+
+        <!-- Client Testimonials -->
+        <div class="testimonials">
+            <h2>Client Testimonials</h2>
+            <div class="testimonial">
+                "This team is amazing! They helped me build my website from the ground up, and the results were incredible."
+            </div>
+            <div class="testimonial">
+                "I highly recommend their services. Professional, efficient, and great customer support."
+            </div>
+        </div>
+    </div>
+
+    <!-- Enrollment Form Section -->
+    <div class="enrollment-form">
+        <h2>Join Our Clubs</h2>
+        <form action="#" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="tel" name="phone" placeholder="Your Phone Number" required>
+            <select name="club" required>
+                <option value="" disabled selected>Select a Club</option>
+                <option value="x1">Club X1</option>
+                <option value="x2">Club X2</option>
+                <option value="x3">Club X3</option>
+                <option value="x4">Club X4</option>
+            </select>
+            <textarea name="reason" rows="4" placeholder="Why do you want to join?" required></textarea>
+            <button type="button" onclick="formsubmit()">Click Me</button>
+
+        </form>
+    </div>
+    <footer class="footer-distributed">
+
+        <div class="footer-left">
+            <img src="https://github.com/vashishtalisha/images/blob/main/chitkara%20logo.png?raw=true" alt="Company Logo" class="footer-logo">
+            <p class="footer-links">
+                <a href="index.html" class="link-1">Home</a>
+                <a href="CLUBS.html">Clubs</a>
+                
+                <a href="about.html">About</a>
+                <a href="faq.html">Faq</a>
+                <a href="contact.html">Contact</a>
+            </p>
+        </div>
+        
+    
+        <div class="footer-center">
+          <div>
+            <i class="fa fa-map-marker"></i>
+            <p><span>Chitkara University</span> Rajpura, Punjab</p>
+          </div>
+          <div>
+            <i class="fa fa-phone"></i>
+            <p>+91-8570893065</p>
+          </div>
+          <div>
+            <i class="fa fa-envelope"></i>
+            <p><a href="mailto:support@company.com">cuietcurrents@gmail.com</a></p>
+          </div>
+        </div>
+    
+        <div class="footer-right">
+          <p class="footer-company-about">
+            <span>About the company</span>
+            Created with the vision of keeping students informed about everything happening across the campus, all in one place.
+          </p>
+          <div class="footer-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+        
+        </div>
+      </footer>
+</body>
+<script src="navbar.js"></script>
+<script>
+    function formsubmit() {
+        alert('your request has been submitted');
+    }
+</script>
+
+</html>

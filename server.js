@@ -8,8 +8,8 @@ app.use(morgan('dev'))
 const helmet = require('helmet');
 app.use(helmet()); // Protects against common vulnerabilities
 
-const cors = require('cors');
-app.use(cors()); // Enable all origins (for APIs)
+// const cors = require('cors');
+// app.use(cors()); // Enable all origins (for APIs)
 
 
 const PORT = 8080
@@ -39,6 +39,30 @@ app.get('/api/register', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'register.html')) // Serve the register HTML file
 })
 // Use error handler middleware for catching and handling errors
+app.get('/Panache', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'panache.html')) // Serve the register HTML file
+})
+app.get('/Custody', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'custody.html')) // Serve the register HTML file
+})
+app.get('/Tasveer', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'tasveer.html')) // Serve the register HTML file
+})
+app.get('/Dhwani', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'dhwani.html')) // Serve the register HTML file
+})
+app.get('/Reflection', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'reflection.html')) // Serve the register HTML file
+})
+app.get('/events', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'panache.html')) // Serve the register HTML file
+})
+app.get('/contact', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'contact.html')) // Serve the register HTML file
+})
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'aboutus.html')) // Serve the register HTML file
+})
 app.use(errorHandler) // Handle errors globally
 // Start the server and listen on the specified port
 app.listen(PORT, () => {
