@@ -1,6 +1,17 @@
 const express = require('express') // Express for routing and middleware management
 const path = require('path') // Path to handle file paths
 const app = express()
+
+const morgan=require('morgan')//color codes to the status code
+app.use(morgan('dev'))
+
+const helmet = require('helmet');
+app.use(helmet()); // Protects against common vulnerabilities
+
+const cors = require('cors');
+app.use(cors()); // Enable all origins (for APIs)
+
+
 const PORT = 8080
 // Import middlewares
 const logger = require('./middlewares/logger') // Import logger middleware
