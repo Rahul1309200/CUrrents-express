@@ -71,6 +71,9 @@ app.get('/api/register', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'register.html')) // Serve the register HTML file
 })
 // Use error handler middleware for catching and handling errors
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'dashboard.html')) // Serve the dashboard HTML file
+})
 app.get('/Panache', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'panache.html')) // Serve the register HTML file
 })
