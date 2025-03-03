@@ -11,6 +11,7 @@ app.use(
       directives: {
         defaultSrc: ["'self'"],
         scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+        scriptSrcAttr: ["'unsafe-inline'"],  // ✅ Allow inline event handlers
         imgSrc: ["'self'", "data:", "https://github.com/", "https://raw.githubusercontent.com/", "https://sustainable.chitkara.edu.in/", "https://st4.depositphotos.com/", "https://images4.alphacoders.com/","https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/6246684/pexels-photo-6246684.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/3403511/pexels-photo-3403511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/15740610/pexels-photo-15740610/free-photo-of-young-model-in-a-blue-dress-on-a-fashion-show.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/1148957/pexels-photo-1148957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/3097438/pexels-photo-3097438.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/29895385/pexels-photo-29895385/free-photo-of-photographer-captures-portrait-with-dslr.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/13192039/pexels-photo-13192039.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/4023351/pexels-photo-4023351.jpeg","https://images.pexels.com/photos/9511241/pexels-photo-9511241.jpeg","https://images.pexels.com/photos/7778897/pexels-photo-7778897.jpeg"],
         styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com/"],
         fontSrc: ["'self'", "https://fonts.gstatic.com/"],
@@ -18,15 +19,17 @@ app.use(
     },
   })
 );
+
+
  // Protects against common vulnerabilities
 
 const cors = require('cors');
 app.use(cors()); // Enable all origins (for APIs)
 
-const bodyParser=require('body-parser')
-app.use(bodyParser.json());
-// Middleware to parse URL-encoded data (from HTML forms)
-app.use(bodyParser.urlencoded({ extended: true }));
+// const bodyParser=require('body-parser')
+// app.use(bodyParser.json());
+// // Middleware to parse URL-encoded data (from HTML forms)
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 
 const rateLimit = require('express-rate-limit'); // Import the package
