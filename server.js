@@ -95,6 +95,9 @@ app.get('/contact', (req, res) => {
 app.get('/about', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'aboutus.html')) // Serve the register HTML file
 })
+app.get('/profile', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'DashboardClub.html')) // Serve the register HTML file
+})
 app.use(errorHandler) // Handle errors globally
 // Start the server and listen on the specified port
 app.listen(PORT, () => {
