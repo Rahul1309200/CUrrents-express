@@ -4,12 +4,24 @@ const app = express()
 
 const morgan=require('morgan')//color codes to the status code
 app.use(morgan('dev'))
+const helmet=require('helmet')
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+        imgSrc: ["'self'", "data:", "https://github.com/", "https://raw.githubusercontent.com/", "https://sustainable.chitkara.edu.in/", "https://st4.depositphotos.com/", "https://images4.alphacoders.com/"],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com/"],
+        fontSrc: ["'self'", "https://fonts.gstatic.com/"],
+      },
+    },
+  })
+);
+ // Protects against common vulnerabilities
 
-const helmet = require('helmet');
-app.use(helmet()); // Protects against common vulnerabilities
-
-// const cors = require('cors');
-// app.use(cors()); // Enable all origins (for APIs)
+const cors = require('cors');
+app.use(cors()); // Enable all origins (for APIs)
 
 
 const PORT = 8080
