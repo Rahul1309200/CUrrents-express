@@ -103,3 +103,28 @@ nav {
 .navbar a.active::before {
   width: 100%;
 }
+/* Profile Icon Styling */
+.profile {
+  position: absolute;
+  right: 20px; /* Adjust as needed */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.profile a {
+  display: flex;
+  align-items: center;
+}
+
+.profile-img {
+  width: 40px; /* Adjust size as needed */
+  height: 40px;
+  border-radius: 50%; /* Makes it circular */
+  object-fit: cover;
+  border: 2px solid white; /* Optional border */
+  transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.1);
+}
