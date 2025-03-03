@@ -20,6 +20,112 @@
             min-height: 100vh;
             padding: 20px;
         }
+        /* Basic Reset */
+body, ul {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar Styling */
+nav {
+  background: #1F1F1F; /* Transparent white */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: sticky; /* Sticks to the top when scrolling */
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 1em 0;
+}
+
+.navbar li {
+  margin: 0 30px;
+  position: relative; /* Required for dropdown positioning */
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  position: relative;
+  padding: 5px 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.navbar a:hover {
+  transform: scale(1.1); /* Subtle scaling effect */
+  opacity: 0.8;
+}
+
+/* Dropdown Styles */
+.dropdown-menu,
+.nested-menu {
+  display: none;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px); /* Frosted glass effect for dropdowns */
+  -webkit-backdrop-filter: blur(5px);
+  list-style: none;
+  padding: 10px 0;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-menu a,
+.nested-menu a {
+  color: #F7F2F3;
+  padding: 8px 15px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-menu a:hover,
+.nested-menu a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Hover to Show Dropdown */
+.dropdown:hover > .dropdown-menu {
+  display: block;
+}
+.nested-dropdown:hover > .nested-menu {
+  display: block;
+  left: 100%;
+  top: 0;
+}
+
+/* Underline Animation */
+.navbar a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #A51232;
+  transition: all 0.3s ease;
+}
+
+.navbar a:hover::before {
+  width: 100%;
+}
+.navbar a.active::before {
+  width: 100%;
+}
+
         
         .dashboard {
             background-color: #f5f2ed;
@@ -379,6 +485,68 @@
     </style>
 </head>
 <body>
+    <nav>
+        <ul class="navbar">
+          <li><a href="/dashboard" class="nav-link">HOME</a></li>
+          <li class="dropdown">
+            <a href="#clubs" class="nav-link">CLUBS</a>
+            <ul class="dropdown-menu">
+              <li class="nested-dropdown">
+                <a href="#">C2S2</a>
+                <ul class="nested-menu">
+                  <li><a href="/Panache">Panache</a></li>
+                  <li><a href="/Custody">Custody </a></li>
+                  <li><a href="/NatSamrat">Nat Samrat</a></li>
+                  <li><a href="/Reflection">Reflection</a></li>
+                  <li><a href="/Tasveer">Tasveer</a></li>
+                  <li><a href="/Dhwani">Dhwani</a></li>
+                  <li><a href="/TBR">The Bhangra Regiment</a></li>
+                  <li><a href="/Lit">Literayllis</a></li>
+                  <li><a href="/Natraj">Natraj</a></li>
+                  <li><a href="/LGS">Lethal Gidda Squad</a></li>
+                </ul>
+              </li>
+              <li class="nested-dropdown">
+                <a href="#">Technical</a>
+                <ul class="nested-menu">
+                  <li><a href="#">IEEE</a></li>
+                  <li><a href="#">Coding Ninjas</a></li>
+                  <li><a href="#">ACM</a></li>
+                  <li><a href="#">Coding Blocks</a></li>
+                  <li><a href="#">DICE</a></li>
+                </ul>
+              </li>
+              <li class="nested-dropdown">
+                <a href="#">Sports</a>
+                <ul class="nested-menu">
+                  <li><a href="#">Football Club</a></li>
+                  <li><a href="#">Cricket Club</a></li>
+                  <li><a href="#">Basketball Club</a></li>
+                  <li><a href="#">Tennis Club</a></li>
+                  <li><a href="#">Swimming Club</a></li>
+                </ul>
+              </li>
+              <li class="nested-dropdown">
+                <a href="#">Extra-Curriculars</a>
+                <ul class="nested-menu">
+                  <li><a href="#">DebSoc</a></li>
+                  <li><a href="#">Book Club</a></li>
+                  <li><a href="#">NSS</a></li>
+                  <li><a href="#">NCC</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="/events" class="nav-link">EVENTS</a></li>
+          <li><a href="/contact" class="nav-link">CONTACT US</a></li>
+          <li><a href="/about" class="nav-link">ABOUT US</a></li>
+        </ul>
+        <div class="profile">
+            <a href="/profile">
+              <img src="/images/profile.png" alt="Profile" class="profile-img">
+            </a>
+          </div>
+    </nav>
     <div class="dashboard" id="dashboard-container">
         <div class="dashboard-header">
             <div class="logo-container">
