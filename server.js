@@ -26,10 +26,10 @@ app.use(
 const cors = require('cors');
 app.use(cors()); // Enable all origins (for APIs)
 
-// const bodyParser=require('body-parser')
-// app.use(bodyParser.json());
+const bodyParser=require('body-parser')
+app.use(bodyParser.json());
 // // Middleware to parse URL-encoded data (from HTML forms)
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 const rateLimit = require('express-rate-limit'); // Import the package
