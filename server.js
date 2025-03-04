@@ -24,8 +24,19 @@ app.use(
 
  // Protects against common vulnerabilities
 
-const cors = require('cors');
-app.use(cors()); // Enable all origins (for APIs)
+ const allowedOrigins = ['http://localhost:3000', 'https://yourwebsite.com'];
+ const cors=require('cors')
+
+ app.use(cors({
+   origin: function (origin, callback) {
+     if (!origin || allowedOrigins.includes(origin)) {
+       callback(null, true);
+     } else {
+       callback(new Error('Not allowed by CORS'));
+     }
+   }
+ }));
+ 
 
 const bodyParser=require('body-parser')
 app.use(bodyParser.json());
@@ -46,7 +57,6 @@ const limiter = rateLimit({
 
 // Apply the rate limiter to all API routes
 app.use('/api', limiter);
-
 
 const PORT = 8080
 // Import middlewares
