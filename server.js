@@ -24,7 +24,6 @@ app.use(
 
  // Protects against common vulnerabilities
 
- const allowedOrigins = ['http://localhost:3000', 'https://yourwebsite.com'];
  const cors=require('cors')
 
  app.use(cors());
