@@ -27,15 +27,7 @@ app.use(
  const allowedOrigins = ['http://localhost:3000', 'https://yourwebsite.com'];
  const cors=require('cors')
 
- app.use(cors({
-   origin: function (origin, callback) {
-     if (!origin || allowedOrigins.includes(origin)) {
-       callback(null, true);
-     } else {
-       callback(new Error('Not allowed by CORS'));
-     }
-   }
- }));
+ app.use(cors());
  
 
 const bodyParser=require('body-parser')
@@ -69,6 +61,7 @@ app.use(express.urlencoded({ extended: true })) // To parse URL-encoded data
 app.use(logger) // Log each request
 // Serve static files (HTML, CSS, JS) from the /public directory
 app.use(express.static(path.join(__dirname, 'public')))
+app.use('/images', express.static(__dirname + '/public/images'));
 // Import API routes from apiRoutes.js
 const apiRoutes = require('./api/apiRoutes') // Import the API routes for login and register functionality
 app.use('/api', apiRoutes) // Mount the API routes on /api path
