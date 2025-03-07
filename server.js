@@ -107,6 +107,9 @@ app.get('/about', (req, res) => {
 app.get('/profile', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'DashboardClub.html')) // Serve the register HTML file
 })
+app.get('/error', (req, res) => {
+    errorHandler(new Error("An errror occured "),req,res);
+})
 app.use(errorHandler) // Handle errors globally
 // Start the server and listen on the specified port
 app.listen(PORT, () => {
