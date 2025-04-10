@@ -59,6 +59,8 @@ app.use(express.urlencoded({ extended: true })) // To parse URL-encoded data
 // Use logger middleware for all incoming requests
 app.use(logger) // Log each request
 // Serve static files (HTML, CSS, JS) from the /public directory
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/images', express.static(__dirname + '/public/images'));
 // Import API routes from apiRoutes.js
@@ -66,46 +68,46 @@ const apiRoutes = require('./api/apiRoutes') // Import the API routes for login 
 app.use('/api', apiRoutes) // Mount the API routes on /api path
 // Serve login.html at the root URL
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'login.html')) // Serve the login page at root URL
+  res.render('login'); // Serve the login page at root URL
 })
 // Serve dashboard.html when user is authenticated
 app.get('/api/dashboard', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'dashboard.html')) // Serve the dashboard HTML file
+  res.render('dashboard'); // Serve the dashboard HTML file
 })
 // Serve register.html when user needs to register
 app.get('/api/register', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'register.html')) // Serve the register HTML file
+  res.render('register');
 })
 // Use error handler middleware for catching and handling errors
 app.get('/dashboard', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'dashboard.html')) // Serve the dashboard HTML file
+  res.render('dashboard');
 })
 app.get('/Panache', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'panache.html')) // Serve the register HTML file
+  res.render('panache');// Serve the register HTML file
 })
 app.get('/Custody', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'custody.html')) // Serve the register HTML file
+  res.render('custody'); // Serve the register HTML file
 })
 app.get('/Tasveer', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'tasveer.html')) // Serve the register HTML file
+  res.render('tasveer'); // Serve the register HTML file
 })
 app.get('/Dhwani', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'dhwani.html')) // Serve the register HTML file
+  res.render('dhwani');// Serve the register HTML file
 })
 app.get('/Reflection', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'reflection.html')) // Serve the register HTML file
+  res.render('reflection'); // Serve the register HTML file
 })
 app.get('/events', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'panache.html')) // Serve the register HTML file
+  res.render('panache'); // Serve the register HTML file
 })
 app.get('/contact', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'contact.html')) // Serve the register HTML file
+  res.render('contact'); // Serve the register HTML file
 })
 app.get('/about', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'aboutus.html')) // Serve the register HTML file
+  res.render('aboutus'); // Serve the register HTML file
 })
 app.get('/profile', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'DashboardClub.html')) // Serve the register HTML file
+  res.render('DashboardClub'); // Serve the register HTML file
 })
 app.get('/error', (req, res) => {
     errorHandler(new Error("An errror occured "),req,res);
