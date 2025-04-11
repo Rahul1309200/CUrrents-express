@@ -35,8 +35,8 @@ router.post('/register', (req, res, next) => {
     users.push(newUser) // Add the new user to the users array
     // Write the updated users array back to the JSON file
     fs.writeFile(path.join(__dirname, '../models/users.json'), JSON.stringify(users, null, 2), (err) => {
-      if (err) return next(err) // Pass any error to the error handling middleware
-      res.status(302).redirect('/') // Redirect to login page after successful registration
+      if (err) return next(err)// Pass any error to the error handling middleware
+      res.status(302).redirect('/')// Redirect to login page after successful registration
     })
   })
 })
