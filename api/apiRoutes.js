@@ -10,8 +10,9 @@ router.post('/login', (req, res, next) => {
   fs.readFile(path.join(__dirname, '../models/users.json'), 'utf-8', (err, data) => {
     if (err) return next(err) // Pass any error to the error handling middleware
     const users = JSON.parse(data) // Parse JSON data to get the user list
-    const user = users.find(u => u.username === username && u.password === password) // Find matching user
+    const user = users.find(u => u.username === username && u.password === password)// Find matching user
     if (user) {
+      req.session.user = user;
       // If user exists, redirect to the dashboard
       return res.status(302).redirect('/api/dashboard') // Redirect to dashboard.html
     } else {

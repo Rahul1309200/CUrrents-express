@@ -1,6 +1,13 @@
 const express = require('express') // Express for routing and middleware management
 const path = require('path') // Path to handle file paths
 const app = express()
+const session = require('express-session');
+app.use(session({
+  secret: 'my_secret_key', // change this
+  resave: false,
+  saveUninitialized: true
+}));
+
 
 const morgan=require('morgan')//color codes to the status code
 app.use(morgan('dev'))
@@ -72,7 +79,7 @@ app.get('/', (req, res) => {
 })
 // Serve dashboard.html when user is authenticated
 app.get('/api/dashboard', (req, res) => {
-  res.render('dashboard'); // Serve the dashboard HTML file
+  res.render('dashboard', { user: req.session.user }); // Serve the dashboard HTML file
 })
 // Serve register.html when user needs to register
 app.get('/api/register', (req, res) => {
