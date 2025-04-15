@@ -82,7 +82,7 @@ app.get('/api/dashboard', (req, res) => {
 })
 // Serve register.html when user needs to register
 app.get('/api/register', (req, res) => {
-  res.render('register');
+  res.render('register'); 
 })
 // Use error handler middleware for catching and handling errors
 app.get('/dashboard', (req, res) => {
