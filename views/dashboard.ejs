@@ -26,7 +26,7 @@
 </head>
 <body>
   <% if (user) { %>
-    <div id="welcomePopup" class="popup">Welcome <%= user %>!</div>
+    <div id="welcome-popup" class="popup">Welcome <%= user %>!</div>
   <% } %>
   
   <nav>
@@ -246,5 +246,16 @@
       </footer>
       <script src="/navbar.js"></script>
       <!-- <script src="/dashboard.js"></script> -->
+       <script>
+        document.addEventListener('DOMContentLoaded', () => {
+  const popup = document.getElementById('welcome-popup');
+  if (popup) {
+    setTimeout(() => {
+      popup.style.display = 'none';
+    }, 5000);
+  }
+});
+
+       </script>
 </body>
 </html>

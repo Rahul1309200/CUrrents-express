@@ -76,10 +76,18 @@ navLinks.forEach(link => {
 //navbar js ends
 
 
-  const popup = document.getElementById("welcomePopup");
+//   const popup = document.getElementById("welcomePopup");
+//   if (popup) {
+//     setTimeout(() => {
+//       popup.style.display = "none";
+//     }, 5000);
+//   }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const popup = document.getElementById('welcome-popup');
   if (popup) {
     setTimeout(() => {
-      popup.style.display = "none";
+      popup.style.display = 'none';
     }, 5000);
   }
-
+});
