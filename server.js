@@ -67,7 +67,6 @@ app.use(express.urlencoded({ extended: true })) // To parse URL-encoded data
 app.use(logger) // Log each request
 // Serve static files (HTML, CSS, JS) from the /public directory
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/images', express.static(__dirname + '/public/images'));
 // Import API routes from apiRoutes.js
