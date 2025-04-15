@@ -25,6 +25,10 @@
   <link rel="stylesheet" href="/dashboard.css">
 </head>
 <body>
+  <% if (user) { %>
+    <div id="welcomePopup" class="popup">Welcome <%= user %>!</div>
+  <% } %>
+  
   <nav>
     <ul class="navbar">
       <li><a href="/dashboard" class="nav-link">HOME</a></li>

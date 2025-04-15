@@ -74,3 +74,12 @@ navLinks.forEach(link => {
 
 
 //navbar js ends
+
+
+  const popup = document.getElementById("welcomePopup");
+  if (popup) {
+    setTimeout(() => {
+      popup.style.display = "none";
+    }, 5000);
+  }
+

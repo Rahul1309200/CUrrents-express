@@ -14,7 +14,12 @@ router.post('/login', (req, res, next) => {
     if (user) {
       req.session.user = user;
       // If user exists, redirect to the dashboard
-      return res.status(302).redirect('/api/dashboard') // Redirect to dashboard.html
+     // return res.status(302).redirect('/api/dashboard') // Redirect to dashboard.html
+     req.session.user = user.username;
+     return res.redirect('/api/dashboard');
+
+      
+
     } else {
       // If user doesn't exist, redirect to the register page
       return res.status(302).redirect('/api/register') // Redirect to register.html
