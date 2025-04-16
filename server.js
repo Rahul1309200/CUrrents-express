@@ -112,7 +112,13 @@ app.get('/Reflection', (req, res) => {
   res.render('reflection'); // Serve the register HTML file
 })
 app.get('/events', (req, res) => {
-  res.render('panache'); // Serve the register HTML file
+  const upcomingPath = path.join(__dirname, 'models', 'upcomingPanacheEvents.json');
+  const pastPath = path.join(__dirname, 'models', 'pastPanacheEvents.json');
+
+  const upcomingEvents = JSON.parse(fs.readFileSync(upcomingPath, 'utf-8'));
+  const pastEvents = JSON.parse(fs.readFileSync(pastPath, 'utf-8'));
+
+  res.render('panache', { upcomingEvents, pastEvents });
 })
 app.get('/contact', (req, res) => {
   res.render('contact'); // Serve the register HTML file
