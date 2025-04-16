@@ -2,6 +2,8 @@ const express = require('express') // Express for routing and middleware managem
 const path = require('path') // Path to handle file paths
 const app = express()
 const session = require('express-session');
+const fs = require('fs');
+
 app.use(session({
   secret: 'my_secret_key', // change this
   resave: false,
@@ -89,7 +91,13 @@ app.get('/dashboard', (req, res) => {
   res.render('dashboard');
 })
 app.get('/Panache', (req, res) => {
-  res.render('panache');// Serve the register HTML file
+  const upcomingPath = path.join(__dirname, 'models', 'upcomingPanacheEvents.json');
+  const pastPath = path.join(__dirname, 'models', 'pastPanacheEvents.json');
+
+  const upcomingEvents = JSON.parse(fs.readFileSync(upcomingPath, 'utf-8'));
+  const pastEvents = JSON.parse(fs.readFileSync(pastPath, 'utf-8'));
+
+  res.render('panache', { upcomingEvents, pastEvents });
 })
 app.get('/Custody', (req, res) => {
   res.render('custody'); // Serve the register HTML file

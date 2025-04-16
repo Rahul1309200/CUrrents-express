@@ -480,86 +480,44 @@
         </div>
     </section>
 
-    <!-- Upcoming Events Section - Redesigned with Cards -->
+    <!-- Upcoming Events -->
     <section class="upcoming-events">
         <h2>Upcoming Events</h2>
         <div class="upcoming-events-grid">
-            <div class="upcoming-event-card">
-                <img src="https://images.pexels.com/photos/13192039/pexels-photo-13192039.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="upcoming-event-image" alt="Modeling Workshop">
-                <div class="upcoming-event-overlay">
-                    <h3>Modeling Workshop</h3>
-                    <p>Venue: Explore Stars</p>
-                    <p>Date: 29 December 2024</p>
-                    <a href="https://forms.gle/eEkxJWzw9rKaPW3V9" class="register-link">Register</a>
+            <% upcomingEvents.forEach(event => { %>
+                <div class="upcoming-event-card">
+                    <img src="<%= event.image %>" class="upcoming-event-image" alt="<%= event.title || event.name %>">
+                    <div class="upcoming-event-overlay">
+                        <h3><%= event.title || event.name %></h3>
+                        <p>Venue: <%= event.venue %></p>
+                        <p>Date: <%= event.date %></p>
+                        <a href="<%= event.link %>" class="register-link">Register</a>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="upcoming-event-card">
-                <img src="https://images.pexels.com/photos/29895385/pexels-photo-29895385/free-photo-of-photographer-captures-portrait-with-dslr.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="upcoming-event-image" alt="Photoshoot Extravaganza">
-                <div class="upcoming-event-overlay">
-                    <h3>Photoshoot Extravaganza</h3>
-                    <p>Venue: Tennis Court</p>
-                    <p>Date: 15 January 2024</p>
-                    <a href="https://forms.gle/eEkxJWzw9rKaPW3V9" class="register-link">Register</a>
-                </div>
-            </div>
-            
-            <div class="upcoming-event-card">
-                <img src="https://images.pexels.com/photos/3097438/pexels-photo-3097438.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="upcoming-event-image" alt="Fashion Show">
-                <div class="upcoming-event-overlay">
-                    <h3>Fashion Show</h3>
-                    <p>Venue: Explotorium</p>
-                    <p>Date: 22 January 2025</p>
-                    <a href="https://forms.gle/eEkxJWzw9rKaPW3V9" class="register-link">Register</a>
-                </div>
-            </div>
-            
-            <div class="upcoming-event-card">
-                <img src="https://images.pexels.com/photos/1148957/pexels-photo-1148957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="upcoming-event-image" alt="Styling Session">
-                <div class="upcoming-event-overlay">
-                    <h3>Styling Session</h3>
-                    <p>Venue: OSA</p>
-                    <p>Date: 25 January 2025</p>
-                    <a href="https://forms.gle/eEkxJWzw9rKaPW3V9" class="register-link">Register</a>
-                </div>
-            </div>
+            <% }) %>
         </div>
     </section>
-
-    <!-- Past Events Section - Redesigned with Cards -->
+    
+    <!-- Past Events -->
     <section class="past-events">
         <h2>Past Events</h2>
         <div class="past-events-grid">
-            <div class="past-event-card">
-                <img src="https://images.pexels.com/photos/15740610/pexels-photo-15740610/free-photo-of-young-model-in-a-blue-dress-on-a-fashion-show.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="past-event-image" alt="UN Day Event">
-                <div class="past-event-overlay">
-                    <h3>UN Day Event</h3>
-                    <p>Venue: Explore Stars</p>
-                    <p>Date: 29 September 2024</p>
-                    <a href="/un" class="view-gallery-link">View Gallery</a>
+            <% pastEvents.forEach(event => { %>
+                <div class="past-event-card">
+                    <img src="<%= event.image %>" class="past-event-image" alt="<%= event.name %>">
+                    <div class="past-event-overlay">
+                        <h3><%= event.name %></h3>
+                        <p>Venue: <%= event.venue %></p>
+                        <p>Date: <%= event.date %></p>
+                        <% if (event.link) { %>
+                            <a href="<%= event.link %>" class="view-gallery-link">View Gallery</a>
+                        <% } %>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="past-event-card">
-                <img src="https://images.pexels.com/photos/3403511/pexels-photo-3403511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="past-event-image" alt="Glamour Night">
-                <div class="past-event-overlay">
-                    <h3>Glamour Night</h3>
-                    <p>Venue: Tennis Court</p>
-                    <p>Date: 5 November 2024</p>
-                </div>
-            </div>
-            
-            <div class="past-event-card">
-                <img src="https://images.pexels.com/photos/6246684/pexels-photo-6246684.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="past-event-image" alt="Posture Workshop">
-                <div class="past-event-overlay">
-                    <h3>Posture Workshop</h3>
-                    <p>Venue: Zero Ground Stage</p>
-                    <p>Date: 9 November 2024</p>
-                </div>
-            </div>
+            <% }) %>
         </div>
     </section>
-
+    
     <div class="footer">
         <p>&copy; 2024 Panache Club. All Rights Reserved.</p>
         <div class="social-icons">
