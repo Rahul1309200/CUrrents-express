@@ -88,7 +88,7 @@ app.get('/api/register', (req, res) => {
 })
 // Use error handler middleware for catching and handling errors
 app.get('/dashboard', (req, res) => {
-  res.render('dashboard');
+  res.render('dashboard', { user: req.session.user || null })
 })
 app.get('/Panache', (req, res) => {
   const upcomingPath = path.join(__dirname, 'models', 'upcomingPanacheEvents.json');
@@ -112,7 +112,7 @@ app.get('/Reflection', (req, res) => {
   res.render('reflection'); // Serve the register HTML file
 })
 app.get('/events', (req, res) => {
-  const upcomingPath = path.join(__dirname, 'models', 'upcomingPanacheEvents.json');
+    const upcomingPath = path.join(__dirname, 'models', 'upcomingPanacheEvents.json');
   const pastPath = path.join(__dirname, 'models', 'pastPanacheEvents.json');
 
   const upcomingEvents = JSON.parse(fs.readFileSync(upcomingPath, 'utf-8'));
