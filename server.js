@@ -98,15 +98,26 @@ app.get('/api/register', (req, res) => {
 });
 
 // Example of fetching events from MongoDB
-app.get('/Panache', (req, res) => {
-  const upcomingPath = path.join(__dirname, 'models', 'upcomingPanacheEvents.json');
-  const pastPath = path.join(__dirname, 'models', 'pastPanacheEvents.json');
+app.get('/Panache', async (req, res) => {
+  try {
+    const allEvents = await Event.find(); // Fetch all events from MongoDB
 
-  const upcomingEvents = JSON.parse(fs.readFileSync(upcomingPath, 'utf-8'));
-  const pastEvents = JSON.parse(fs.readFileSync(pastPath, 'utf-8'));
+    const upcomingEvents = allEvents.filter(event => {
+      const eventDate = new Date(event.date);
+      return eventDate >= new Date();
+    });
 
-  res.render('panache', { upcomingEvents, pastEvents });
-})
+    const pastEvents = allEvents.filter(event => {
+      const eventDate = new Date(event.date);
+      return eventDate < new Date();
+    });
+
+    res.render('panache', { upcomingEvents, pastEvents });
+  } catch (err) {
+    console.error('Error fetching events:', err);
+    res.status(500).send('Internal Server Error');
+  }
+});
 
 // Other routes
 app.get('/Custody', (req, res) => res.render('custody'));
@@ -123,6 +134,36 @@ app.get('/error', (req, res) => {
 app.use(errorHandler); // Global error handler middleware
 
 // Start the server
+
+const eventSchema = new mongoose.Schema({
+  name: String,
+  date: String,
+  time: String,
+  location: String,
+  description: String,
+  imageUrl: String,
+  registrationUrl: String
+});
+
+const Event = mongoose.model('Event', eventSchema);
+
+// POST route to save event
+app.post('/api/events', async (req, res) => {
+  try {
+      const event = new Event(req.body);
+      await event.save();
+      res.status(200).json({ message: 'Event saved successfully!' });
+  } catch (err) {
+      res.status(500).json({ error: 'Failed to save event' });
+  }
+});
+
+
+app.get('/api/events', async (req, res) => {
+  const events = await Event.find();
+  res.json(events);
+});
+
 const PORT = 8080;
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
