@@ -23,6 +23,7 @@ app.use(session({
   
   const morgan=require('morgan')//color codes to the status code
   app.use(morgan('dev'))
+// Protects against common vulnerabilities
   const helmet=require('helmet')
   app.use(
     helmet({
@@ -41,10 +42,7 @@ app.use(session({
 
   
   
-  
-   // Protects against common vulnerabilities
-  
-   const cors=require('cors')
+   const cors=require('cors') // Cross-Origin Resource Sharing allows sharing when frontend is on different port
   
    app.use(cors());
    
@@ -70,13 +68,15 @@ app.use(session({
   app.use('/api', limiter);
 
 // Set up MongoDB connection using Mongoose
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log('MongoDB connected');
-  })
-  .catch(err => {
-    console.error('MongoDB connection error:', err);
-  });
+// mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+//   .then(() => {
+//     console.log('MongoDB connected');
+//   })
+//   .catch(err => {
+//     console.error('MongoDB connection error:', err);
+//   });
+mongoose.connect(mongoURI);
+
 
 // Set view engine to EJS
 app.set('view engine', 'ejs');
@@ -99,6 +99,46 @@ app.get('/api/register', (req, res) => {
 
 // Example of fetching events from MongoDB
 app.get('/Panache', async (req, res) => {
+  try {
+    const allEvents = await Event.find(); // Fetch all events from MongoDB
+
+    const upcomingEvents = allEvents.filter(event => {
+      const eventDate = new Date(event.date);
+      return eventDate >= new Date();
+    });
+
+    const pastEvents = allEvents.filter(event => {
+      const eventDate = new Date(event.date);
+      return eventDate < new Date();
+    });
+
+    res.render('panache', { upcomingEvents, pastEvents });
+  } catch (err) {
+    console.error('Error fetching events:', err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+app.get('/Panache', async (req, res) => {
+  try {
+    const allEvents = await Event.find(); // Fetch all events from MongoDB
+
+    const upcomingEvents = allEvents.filter(event => {
+      const eventDate = new Date(event.date);
+      return eventDate >= new Date();
+    });
+
+    const pastEvents = allEvents.filter(event => {
+      const eventDate = new Date(event.date);
+      return eventDate < new Date();
+    });
+
+    res.render('panache', { upcomingEvents, pastEvents });
+  } catch (err) {
+    console.error('Error fetching events:', err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+app.get('/events', async (req, res) => {
   try {
     const allEvents = await Event.find(); // Fetch all events from MongoDB
 
@@ -161,7 +201,7 @@ app.post('/api/events', async (req, res) => {
 
 app.get('/api/events', async (req, res) => {
   const events = await Event.find();
-  res.json(events);
+  res.json(events);//fetchibg all the events and sending them in json response
 });
 
 const PORT = 8080;
