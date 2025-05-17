@@ -185,7 +185,7 @@ const eventSchema = new mongoose.Schema({
   registrationUrl: String
 });
 
-const Event = mongoose.model('Event', eventSchema);
+const Event = mongoose.model('Event', eventSchema);//creating a model
 
 // POST route to save event
 app.post('/api/events', async (req, res) => {
